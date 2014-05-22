@@ -1,0 +1,77 @@
+<% include header.ejs %>
+
+<% if(user) { %>
+	<header>
+		Welcome, <%= user.name %>! <a href="/logout" class="logout">logout</a>
+	</header>
+	
+	
+	<ul class="games">
+		
+		<% games.forEach(function(game, idx){
+			if(idx % 6 === 0 && idx !== 0){ %>
+				</div>
+			<%} 
+			if(idx % 6 === 0){ %>
+				<div class="group"><div class="title">Group <%=game.group%></div>
+			<%}%>
+		
+			<li title="<%= moment(game.date).format("MM-DD-YYYY H:mm") %>" data-gameId="<%=game.gameId %>" class="score">
+				<span class="team"><%=game.teamOne%></span>
+				<span class="team"><%=game.teamTwo%></span>
+				<input type="number" name="scoreOne" min="0" max="50" class="scoreOne"> :
+				<input type="number" name="scoreTwo" min="0" max="50" class="scoreTwo">
+			</li>
+			
+			
+		<%    }) %>
+	</ul>
+	
+	<script>
+		$.get("/findScores", {}, function(scores) {
+			var scoreOne, scoreTwo, $score;
+			_.each(scores, function(score, key){
+				console.log(score, key);
+				if(score.length === 2){
+					$score = $(".games").find("[data-gameId='" + key + "']");
+					scoreOne = $score.find(".scoreOne").val(score[0]);
+					scoreTwo = $score.find(".scoreTwo").val(score[1]);
+				}
+			});
+		});
+	</script>
+	
+	<button class="submitResults">Commit</button>
+	
+<% } 
+
+else {%>
+	<%- include login %>
+<% } %>
+
+<script>
+	////[{gameId: [1, 2]}, {gameId: [1, 2]}
+	var games = <%- JSON.stringify(games) %>;
+	$(".submitResults").on("click", function(){
+		var arr = [], hs = {};
+		var scoreOne, scoreTwo;
+		var scores = $(".score");
+		var gameId;
+		_.each(scores, function(score){
+			//hs = {};
+			var $score = $(score);
+			gameId = $score.data().gameid;
+			scoreOne = $score.find(".scoreOne").val();
+			scoreTwo = $score.find(".scoreTwo").val();
+			hs[gameId] = [scoreOne, scoreTwo];
+		});
+		console.log(hs);
+		
+		$.post("/commitScores", hs, function(json) {
+			console.log(json);
+		});
+	});
+	
+</script>
+</body>
+</html>

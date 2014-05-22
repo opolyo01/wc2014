@@ -1,0 +1,24 @@
+{
+  "name": "wc2014",
+  "version": "0.1.0",
+  "description": "",
+  "framework": "mvc",
+  "bodyParser": true,
+  "main": "app.js",
+  "logfile": "wc2014.log",
+  "keywords": [],
+  "author": "",
+  "maintainers": [],
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "preferGlobal": false,
+  "dependencies": {
+    "moment": "~2.6.0",
+    "lodash": "~2.4.1"
+  },
+  "license": "",
+  "private": true
+}

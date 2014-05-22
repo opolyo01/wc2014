@@ -1,0 +1,51 @@
+.games{
+	margin-top:30px;
+	margin-left: 20px;
+}
+
+.logout{
+	float: right;
+	margin-right:20px;
+}
+
+header{
+	margin:10px;
+}
+
+.games li{
+	margin-top:10px;
+}
+
+.login, .signup{
+	margin: 0 auto;
+	text-align: center;
+}
+.login, .signup input{
+	margin: 5px;
+}
+.login h1, .signup h1{
+	margin: 20px;
+}
+
+.login .loginButton{
+	margin-top: 20px;
+}
+
+.submitResults{
+	margin: 20px;
+}
+.team{
+	width: 150px;
+	display: inline-block;
+	text-align:left;
+}
+
+.group .title{
+	margin-top:40px;
+	font-size: 24px;
+}
+
+.group{
+	display:inline-block;
+	width: 600px;
+}
