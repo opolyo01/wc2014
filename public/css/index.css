@@ -49,3 +49,11 @@ header{
 	display:inline-block;
 	width: 600px;
 }
+
+.message{
+	position: absolute;
+	z-index: 1;
+	left: 30%;
+	color: red;
+	font-size: 21px;
+}
