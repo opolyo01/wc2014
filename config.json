@@ -12,6 +12,6 @@
 	{ "path": "/getAllGames", "method": "get", "callback": "game#getAllGames" },
 	{ "path": "/updateGames", "method": "post", "callback": "game#updateGames" },
 	{ "path": "/commitScores", "method": "post", "callback": "score#commitScores" },
-	{ "path": "/findScores", "method": "get", "callback": "score#findScores" }
+	{ "path": "/findAllUserScores", "method": "get", "callback": "score#findAllUserScores" }
   ]
 }

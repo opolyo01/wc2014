@@ -1,11 +1,11 @@
-$.get("/findScores", {}, function(scores) {
+$.get("/findAllUserScores", {}, function(scores) {
 	var scoreOne, scoreTwo, $score;
 	_.each(scores, function(score, key){
 		console.log(score, key);
-		if(score.length === 2){
-			$score = $(".games").find("[data-gameId='" + key + "']");
-			scoreOne = $score.find(".scoreOne").val(score[0]);
-			scoreTwo = $score.find(".scoreTwo").val(score[1]);
+		if(score){
+			$score = $(".games").find("[data-gameId='" + score.gameId + "']");
+			scoreOne = $score.find(".scoreOne").val(score.teamOne);
+			scoreTwo = $score.find(".scoreTwo").val(score.teamTwo);
 		}
 	});
 });
@@ -22,16 +22,19 @@ $(".submitResults").on("click", function(){
 		gameId = $score.data().gameid;
 		scoreOne = $score.find(".scoreOne").val();
 		scoreTwo = $score.find(".scoreTwo").val();
-		hs[gameId] = [scoreOne, scoreTwo];
+		arr.push({
+			"gameId": gameId,
+			"teamOne": scoreOne,
+			"teamTwo": scoreTwo
+		});
 	});
 	
-	$.post("/commitScores", hs, function(json) {
-		if(json.success){
+	$.post("/commitScores", {"scores": arr}, function(json) {
+		if(json.length === 1){
 			alert("Scores committed");
 		}
 		else{
 			alert("Scores commit failed");
 		}
-		console.log(json);
 	});
 });
