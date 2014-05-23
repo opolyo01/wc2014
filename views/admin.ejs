@@ -1,0 +1,14 @@
+<% include header.ejs %>
+
+
+<button class="commitGames">Load Games</button>
+
+<a href="/" class="home">Go Home</a>
+
+<script>
+	$(".commitGames").click(function() {
+		$.post("/commitGames", {}, function(json) {
+			console.log(json);
+		});
+	});
+</script>

@@ -3,6 +3,7 @@
   [
     { "path": "/", "callback": "application#index" },
     { "path": "/login", "method": "get", "callback": "application#login" },
+    { "path": "/admin", "method": "get", "callback": "application#admin" },
     { "path": "/login", "method": "post", "callback": "user#login" },
     { "path": "/update", "method": "get", "callback": "application#update" },
     { "path": "/update", "method": "post", "callback": "user#update" },
@@ -10,7 +11,7 @@
     { "path": "/signup", "method": "get", "callback": "application#signup" },
     { "path": "/signup", "method": "post", "callback": "user#signup" },
 	{ "path": "/getAllGames", "method": "get", "callback": "game#getAllGames" },
-	{ "path": "/updateGames", "method": "post", "callback": "game#updateGames" },
+	{ "path": "/commitGames", "method": "post", "callback": "game#commitGames" },
 	{ "path": "/commitScores", "method": "post", "callback": "score#commitScores" },
 	{ "path": "/findAllUserScores", "method": "get", "callback": "score#findAllUserScores" }
   ]

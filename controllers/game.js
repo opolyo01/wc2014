@@ -1,43 +1,68 @@
 var ACS = require('acs').ACS;
 var logger = require('acs').logger;
 var sdk = ACS.initACS('tZguppAg3gt9slE84nA7qgM6wxZeDYI1');
+var _ = require("lodash");
+var Game = require("../data/groupGames");
 
 function getAllGames(req, res){
 	ACS.Objects.query({
 		classname : 'game',
 		"session_id": req.session.session_id
 	}, function(e) {
-		//console.log(e);
-		res.send(e.game[0].games);
+		res.send(e.game);
 	});
 }
 
 
-function updateGames(req, res){
-	//console.log(req.body);
-	var games = [{
-		"teamOne": "Brasil",
-		"scoreOne": "",
-		"teamTwo": "Croatia",
-		"scoreTwo": "",
-	},{
-		"teamOne": "Russia",
-		"scoreOne": "",
-		"teamTwo": "Belgium",
-		"scoreTwo": "",
-	}];
-	ACS.Objects.update({
-		classname: 'game',
+function commitGames(req, res) {
+	var games = Game.games;
+	_.each(games, function(game){
+		var gameId = game.gameId;
+		
+		findGame(req, res, gameId, function(id){
+			if(id){
+				deleteGame(req, res, id, function(status){
+					console.log(status);
+					createGame(req, res, game);
+				});
+			}
+			else{
+				createGame(req, res, game);
+			}
+		});
+		
+	});
+}
+
+function createGame(req, res, game){
+	var acsJson = {
 		"session_id": req.session.session_id,
-		id: "537c4b0c2c2e99082b06b195",
-	    fields: games
-	}, function (e) {
-		console.log(e);
-	    if (e.success) {
-	    	res.send({status: "success"});
-	    } 
-	    else {
-	        res.send({status: "failure"});
-	    }
+		"classname" : "game",
+		"fields" : game
+	};
+	ACS.Objects.create(acsJson, function(e) {
+		res.send(e.game);
+	});
+}
+
+function findGame(req, res, gameId, cb){
+	ACS.Objects.query({
+		classname : 'game',
+		"session_id": req.session.session_id,
+		where: JSON.stringify({gameId: gameId }),
+	    per_page: 200
+	}, function(e) {
+		var id;
+		if(e.game[0] && e.game[0].id){
+			id = e.game[0].id;
+		}
+		
+		if(cb && cb.name !== "callbacks"){
+			cb.call(this,id);
+		}
+		else{
+			res.send(id);
+		}
+		
 	});
 }

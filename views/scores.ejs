@@ -1,0 +1,37 @@
+<ul class="games">
+	<div class="message"></div>
+	<% games.forEach(function(game, idx){
+		if(idx % 6 === 0 && idx !== 0){ %>
+			</div>
+		<%} 
+		if(idx % 6 === 0){ %>
+			<div class="group"><div class="title">Group <%=game.group%></div>
+		<%}%>
+	
+		<li title="<%= moment(game.date).format("MM-DD-YYYY H:mm") %>" data-gameId="<%=game.gameId %>" class="score">
+			<span class="team"><%=game.teamOne%></span>
+			<span class="team"><%=game.teamTwo%></span>
+			
+			<% if(game.completed == "true"){ %>
+				<input class="scoreOne" readonly> <span class="column">:</span>
+				<input class="scoreTwo" readonly>
+				<div class="score-completed">
+					<span><%=game.teamOneScore%>1</span><span class="column">:</span>
+					<span><%=game.teamTwoScore%>2</span>
+				</div>
+				<span class="points-earned">3</span>
+			<%}
+				else{%>
+				<input class="scoreOne"> <span class="column">:</span>
+				<input class="scoreTwo">
+			<%}%>
+			
+		</li>
+	<%    }) %>
+</ul>
+
+<script>
+	games = <%- JSON.stringify(games) %>;
+</script>
+
+<button class="submitResults">Commit</button>

@@ -12,10 +12,24 @@ header{
 	margin:10px;
 }
 
+.score input{
+	width: 50px;
+	text-align: center;
+}
+.score-completed{
+	display: inline-block;
+	margin-left: 30px;
+	color: red;
+}
+.score-completed span{
+	width: 50px;
+}
 .games li{
 	margin-top:10px;
 }
-
+.column{
+	margin-left: 5px;
+}
 .login, .signup{
 	margin: 0 auto;
 	text-align: center;
@@ -34,8 +48,14 @@ header{
 .submitResults{
 	margin: 20px;
 }
+
+.points-earned{
+	margin-left: 20px;
+	font-size: 20px;
+	color: blue;
+}
 .team{
-	width: 150px;
+	width: 110px;
 	display: inline-block;
 	text-align:left;
 }
@@ -47,7 +67,7 @@ header{
 
 .group{
 	display:inline-block;
-	width: 600px;
+	width: 540px;
 }
 
 .message{

@@ -1,31 +1,22 @@
 <header>
-	Welcome, <%= user.name %>! <a href="/logout" class="logout">logout</a>
+	Welcome, <%= user.name %>! 
+	<a href="/logout" class="logout">logout </a>
+	<% if(user.admin == "true") { %>
+		<a href="/admin" class="admin">Admin</a>
+	<% } %>
 </header>
 
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Scores</a></li>
+		<li><a href="#tabs-2">Ratings</a></li>
+		<li><a href="#tabs-3">Chat</a></li>
+	</ul>
+	<div id="tabs-1"><%- include scores %></div>
+	<div id="tabs-2">Ratings</div>
+	<div id="tabs-3">Chat</div>
+</div>
 
-<ul class="games">
-	<div class="message"></div>
-	<% games.forEach(function(game, idx){
-		if(idx % 6 === 0 && idx !== 0){ %>
-			</div>
-		<%} 
-		if(idx % 6 === 0){ %>
-			<div class="group"><div class="title">Group <%=game.group%></div>
-		<%}%>
-	
-		<li title="<%= moment(game.date).format("MM-DD-YYYY H:mm") %>" data-gameId="<%=game.gameId %>" class="score">
-			<span class="team"><%=game.teamOne%></span>
-			<span class="team"><%=game.teamTwo%></span>
-			<input type="number" name="scoreOne" min="0" max="50" class="scoreOne"> :
-			<input type="number" name="scoreTwo" min="0" max="50" class="scoreTwo">
-		</li>
-	<%    }) %>
-</ul>
 
-<script>
-	games = <%- JSON.stringify(games) %>;
-</script>
-
-<button class="submitResults">Commit</button>
 
 <script src="js/index.js"></script>

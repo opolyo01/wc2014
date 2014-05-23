@@ -7,7 +7,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Mexico",
@@ -16,7 +16,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Brasil",
@@ -25,7 +25,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Cameroon",
@@ -34,7 +34,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Cameroon",
@@ -43,7 +43,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Croatia",
@@ -52,7 +52,7 @@ var games = [{
 		"group": "A",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Spain",
@@ -61,7 +61,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Chile",
@@ -70,7 +70,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Spain",
@@ -79,7 +79,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Australia",
@@ -88,7 +88,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Australia",
@@ -97,7 +97,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Netherlands",
@@ -106,7 +106,7 @@ var games = [{
 		"group": "B",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Colombia",
@@ -115,7 +115,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Côte d'Ivoire",
@@ -124,7 +124,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Colombia",
@@ -133,7 +133,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Japan",
@@ -142,7 +142,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Japan",
@@ -151,7 +151,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Côte d'Ivoire",
@@ -160,7 +160,7 @@ var games = [{
 		"group": "C",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Uruguay",
@@ -169,7 +169,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "England",
@@ -178,7 +178,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Uruguay",
@@ -187,7 +187,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Italy",
@@ -196,7 +196,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Italy",
@@ -205,7 +205,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Costa Rica",
@@ -214,7 +214,7 @@ var games = [{
 		"group": "D",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Switzerland",
@@ -223,7 +223,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "France",
@@ -232,7 +232,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Switzerland",
@@ -241,7 +241,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Honduras",
@@ -250,7 +250,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Honduras",
@@ -259,7 +259,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Ecuador",
@@ -268,7 +268,7 @@ var games = [{
 		"group": "E",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Argentina",
@@ -277,7 +277,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Iran",
@@ -286,7 +286,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Argentina",
@@ -295,7 +295,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Nigeria",
@@ -304,7 +304,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Nigeria",
@@ -313,7 +313,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Bosnia-Herzegovina",
@@ -322,7 +322,7 @@ var games = [{
 		"group": "F",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Germany",
@@ -331,7 +331,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Ghana",
@@ -340,7 +340,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Germany",
@@ -349,7 +349,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "United States",
@@ -358,7 +358,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "United States",
@@ -367,7 +367,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Portugal",
@@ -376,7 +376,7 @@ var games = [{
 		"group": "G",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Belgium",
@@ -385,7 +385,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Russia",
@@ -394,7 +394,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Belgium",
@@ -403,7 +403,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "South Korea",
@@ -412,7 +412,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "South Korea",
@@ -421,7 +421,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	},{
 		"gameId": ++idx,
 		"teamOne": "Algeria",
@@ -430,7 +430,7 @@ var games = [{
 		"group": "H",
 		"teamOneScore": "",
 		"teamTwoScore": "",
-		"completed": false
+		"completed": "false"
 	}];
 		
 exports.games = games;

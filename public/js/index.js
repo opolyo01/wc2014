@@ -1,7 +1,10 @@
+
+$(".submitResults").button();
+$( "#tabs" ).tabs();
+
 $.get("/findAllUserScores", {}, function(scores) {
 	var scoreOne, scoreTwo, $score;
 	_.each(scores, function(score, key){
-		console.log(score, key);
 		if(score){
 			$score = $(".games").find("[data-gameId='" + score.gameId + "']");
 			scoreOne = $score.find(".scoreOne").val(score.teamOne);
