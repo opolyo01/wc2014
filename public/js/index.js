@@ -1,7 +1,4 @@
-
-$(".submitResults").button();
-$( "#tabs" ).tabs();
-
+$(".team").tooltip();
 $.get("/findAllUserScores", {}, function(scores) {
 	var scoreOne, scoreTwo, $score;
 	_.each(scores, function(score, key){

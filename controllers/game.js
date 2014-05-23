@@ -22,7 +22,6 @@ function commitGames(req, res) {
 		findGame(req, res, gameId, function(id){
 			if(id){
 				deleteGame(req, res, id, function(status){
-					console.log(status);
 					createGame(req, res, game);
 				});
 			}

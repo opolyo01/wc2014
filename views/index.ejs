@@ -5,8 +5,13 @@
 <% } 
 
 else {%>
+	<% 	var message; 
+		if(message) { %>
+		<div class="error"><%= message %></div>
+	<% } %>
 	<%- include login %>
 <% } %>
+
 
 </body>
 </html>

@@ -3,11 +3,12 @@ var Score = require("./score");
 var moment = require("moment");
 
 function index(req, res) {
+	console.log(req.body);	
 	res.render('index', {user: req.session.user, games: Game.games, moment: moment});
 }
 
 function login(req, res) {
-	res.render('login');
+	index(req, res);
 }
 
 function admin(req, res) {

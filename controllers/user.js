@@ -10,12 +10,15 @@ function signup(req, res) {
 		email: req.body.email,
 		username: req.body.user_name,
 		password: req.body.password,
-		password_confirmation: req.body.password_confirmation
+		password_confirmation: req.body.password_confirmation,
+		custom_fields: {
+			group: req.body.group
+		}
 	};
 	
 	ACS.Users.create(data, function(data) {
-		//logger.debug("######Create######");
-		//logger.debug(JSON.stringify(data, null, 2));
+		logger.debug("######Create######");
+		logger.debug(JSON.stringify(data, null, 2));
 		if(data.success) {
 			var user = data.users[0];
 			if(user.first_name && user.last_name) {
@@ -27,7 +30,7 @@ function signup(req, res) {
 			req.session.user = user;
 			res.redirect('/');
 		} else {
-			logger.info("Create user error: " + data.meta.message);
+			logger.info("Create user error: " + data.message);
 			res.render('signup', {message: data.message});
 		}
 	}, req, res);
@@ -40,7 +43,7 @@ function login(req, res) {
 		password: req.body.password
 	};
 	ACS.Users.login(data, function(data){
-		//logger.debug("######login######");
+		logger.debug("######login######");
 		//logger.debug(JSON.stringify(data, null, 2));
 		if(data.success) {
 			var user = data.users[0];
@@ -53,8 +56,8 @@ function login(req, res) {
 			req.session.session_id = data.meta.session_id;
 			res.redirect('/');
 		} else {
-			logger.info("Login error: " + data.meta.message);
-			res.render('login', {message: data.meta.message});
+			logger.info("Login error: " + data.message);
+			res.render('index', {user: undefined, message: data.message});
 		}
 	}, req, res);
 }

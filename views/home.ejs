@@ -7,14 +7,16 @@
 </header>
 
 <div id="tabs">
-	<ul>
-		<li><a href="#tabs-1">Scores</a></li>
-		<li><a href="#tabs-2">Ratings</a></li>
-		<li><a href="#tabs-3">Chat</a></li>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#scores" data-toggle="tab">Scores</a></li>
+		<li><a href="#ratings" data-toggle="tab">Ratings</a></li>
+		<li><a href="#chat" data-toggle="tab">Chat</a></li>
 	</ul>
-	<div id="tabs-1"><%- include scores %></div>
-	<div id="tabs-2">Ratings</div>
-	<div id="tabs-3">Chat</div>
+	<div class="tab-content">
+		<div class="tab-pane active" id="scores"><%- include scores %></div>
+		<div class="tab-pane fade" id="ratings">Ratings</div>
+		<div class="tab-pane fade" id="chat">Chat</div>
+	</div>
 </div>
 
 

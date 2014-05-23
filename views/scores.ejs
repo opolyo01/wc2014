@@ -8,8 +8,8 @@
 			<div class="group"><div class="title">Group <%=game.group%></div>
 		<%}%>
 	
-		<li title="<%= moment(game.date).format("MM-DD-YYYY H:mm") %>" data-gameId="<%=game.gameId %>" class="score">
-			<span class="team"><%=game.teamOne%></span>
+		<li data-gameId="<%=game.gameId %>" class="score">
+			<span class="team" data-toggle="tooltip" data-placement="top" title="<%= moment(game.date).format("MM-DD-YYYY H:mm") %>"><%=game.teamOne%></span>
 			<span class="team"><%=game.teamTwo%></span>
 			
 			<% if(game.completed == "true"){ %>
