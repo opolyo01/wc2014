@@ -12,7 +12,6 @@ function commitScores(req, res) {
 		findScoreByGameId(req, res, gameId, function(id){
 			if(id){
 				deleteScore(req, res, id, function(status){
-					console.log(status);
 					createScore(req, res, score);
 				});
 			}
@@ -32,7 +31,6 @@ function createScore(req, res, score){
 		"fields" : score
 	};
 	ACS.Objects.create(acsJson, function(e) {
-		console.log(e.score);
 		res.send(e.score);
 	});
 }
@@ -60,10 +58,14 @@ function findScoreByGameId(req, res, gameId, cb){
 }
 
 function findAllUserScores(req, res){
+	var userId =  req.session.user.id ;
+	if(req.query.userId){
+		userId = req.query.userId;
+	}
 	ACS.Objects.query({
 		classname : 'score',
 		"session_id": req.session.session_id,
-		where: JSON.stringify({user_id: req.session.user.id }),
+		where: JSON.stringify({user_id: userId }),
 	    per_page: 200
 	}, function(e) {
 		res.send(e.score);
@@ -83,5 +85,16 @@ function deleteScore(req, res, id, cb){
 		else{
 			res.send(e);
 		}
+	});
+}
+
+function deleteOldUserScore(req, res){
+	var id = req.body.id;
+	ACS.Objects.remove({
+	    classname: 'score',
+		"session_id": req.session.session_id,
+	    id: id
+	}, function (e) {
+	    res.send(e);
 	});
 }

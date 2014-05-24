@@ -3,6 +3,10 @@
 
 <button class="commitGames">Load Games</button>
 
+User ID: <input type="text" class="userId"/>
+
+<button class="deleteScores">Delete Old User Scores</button>
+
 <a href="/" class="home">Go Home</a>
 
 <script>
@@ -10,5 +14,21 @@
 		$.post("/commitGames", {}, function(json) {
 			console.log(json);
 		});
+	});
+	
+	
+	$(".deleteScores").click(function() {
+		var userId = $(".userId").val();
+		$.get("/findAllUserScores", {userId: userId}, function(scores) {
+			console.log(scores);
+			_.each(scores, function(score){
+				console.log(score.id);
+				$.post("/deleteOldUserScore", {id: score.id}, function(json) {
+					console.log(json);
+				});
+			});
+			
+		});
+		
 	});
 </script>

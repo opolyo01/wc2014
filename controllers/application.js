@@ -1,6 +1,7 @@
 var Game = require("../data/groupGames");
 var Score = require("./score");
 var moment = require("moment");
+var _ = require("lodash");
 
 function index(req, res) {
 	console.log(req.body);	
@@ -12,8 +13,13 @@ function login(req, res) {
 }
 
 function admin(req, res) {
-	console.log("Admin User", req.session.user.admin);
-	if(req.session.user.admin == "true"){
+	console.log("user", req.session.user);
+	
+	if(_.isEmpty(req.session.user)){
+		console.log("here");
+		index(req, res);
+	}
+	else if(req.session.user.admin == "true"){
 		console.log("in admin page");
 		res.render('admin');
 	}

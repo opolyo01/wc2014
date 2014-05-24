@@ -33,6 +33,21 @@ function commitGames(req, res) {
 	});
 }
 
+function deleteGame(req, res, id, cb){
+	ACS.Objects.remove({
+	    classname: 'game',
+		"session_id": req.session.session_id,
+	    id: id
+	}, function (e) {
+	    if(cb && cb.name !== "callbacks"){
+			cb.call(this,e);
+		}
+		else{
+			res.send(e);
+		}
+	});
+}
+
 function createGame(req, res, game){
 	var acsJson = {
 		"session_id": req.session.session_id,
