@@ -1,6 +1,7 @@
 ul, li {
     list-style: none;
 }
+
 .games{
 	margin-top:30px;
 	margin-left: 20px;
@@ -132,4 +133,31 @@ header{
 }
 .container .text-muted {
   margin: 20px 0;
+}
+
+@media only screen 
+and (max-width : 760px) {
+	#container{
+		overflow-x:hidden;
+		-webkit-overflow-scrolling: touch
+	}
+	.score input{
+		width: 40px;
+	}
+    .games {
+        margin-top:0px;
+		margin-left: 0px;
+		padding-left: 15px;
+    }
+    .team{
+    	width:75px;
+    	font-size:11px;
+    }
+    .group .title {
+		margin-top: 10px;
+		font-size: 20px;
+	}
+	.submitResults{
+		margin-left: 120px;
+	}
 }
