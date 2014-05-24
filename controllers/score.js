@@ -24,7 +24,7 @@ function commitScores(req, res) {
 }
 
 function createScore(req, res, score){
-	console.log(req.session.session_id);
+	console.log(score);
 	var acsJson = {
 		"session_id": req.session.session_id,
 		"classname" : "score",
@@ -58,7 +58,7 @@ function findScoreByGameId(req, res, gameId, cb){
 }
 
 function findAllUserScores(req, res){
-	var userId =  req.session.user.id ;
+	var userId =  req.session.user.id;
 	if(req.query.userId){
 		userId = req.query.userId;
 	}
