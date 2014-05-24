@@ -25,6 +25,7 @@ function commitScores(req, res) {
 }
 
 function createScore(req, res, score){
+	console.log(req.session.session_id);
 	var acsJson = {
 		"session_id": req.session.session_id,
 		"classname" : "score",

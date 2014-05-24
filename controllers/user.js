@@ -28,6 +28,7 @@ function signup(req, res) {
 			}
 			logger.info('Created user: ' + user.name);
 			req.session.user = user;
+			req.session.session_id = data.meta.session_id;
 			res.redirect('/');
 		} else {
 			logger.info("Create user error: " + data.message);
