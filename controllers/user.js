@@ -96,8 +96,8 @@ function logout(req, res) {
 			delete req.session.user;
 			res.redirect('/');
 		} else {
-			logger.info("Logout error: " + data.meta.message);
-			res.render('/', {message: data.meta.message});
+			logger.info("Logout error: " + data.message);
+			res.render('/', {message: data.message});
 		}
 	}, req, res);
 }
