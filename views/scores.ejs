@@ -15,11 +15,6 @@
 			<% if(game.completed == "true"){ %>
 				<input class="scoreOne" readonly> <span class="column">:</span>
 				<input class="scoreTwo" readonly>
-				<div class="score-completed">
-					<span><%=game.teamOneScore%>1</span><span class="column">:</span>
-					<span><%=game.teamTwoScore%>2</span>
-				</div>
-				<span class="points-earned">3</span>
 			<%}
 				else{%>
 				<input class="scoreOne" type="number" min="0" max="100"> <span class="column">:</span>

@@ -3,8 +3,8 @@ ul, li {
 }
 
 .games{
-	margin-top:30px;
-	margin-left: 20px;
+	margin-top:5px;
+	margin-left: 10px;
 }
 
 .logout{
@@ -139,7 +139,8 @@ header{
 and (max-width : 760px) {
 	#container{
 		overflow-x:hidden;
-		-webkit-overflow-scrolling: touch
+		-webkit-overflow-scrolling: touch;
+		max-width: 760px;
 	}
 	.score input{
 		width: 40px;
@@ -153,11 +154,17 @@ and (max-width : 760px) {
     	width:75px;
     	font-size:11px;
     }
+    .group{
+		width: 260px;
+	}
     .group .title {
 		margin-top: 10px;
 		font-size: 20px;
 	}
 	.submitResults{
 		margin-left: 120px;
+	}
+	.logout{
+		margin-right:40px;
 	}
 }

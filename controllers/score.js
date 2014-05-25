@@ -62,6 +62,10 @@ function findScoreByGameId(req, res, gameId, cb){
 }
 
 function findAllUserScores(req, res){
+	if(!req.session.user){
+		res.redirect('/');
+		return;
+	}
 	var userId =  req.session.user.id;
 	if(req.query.userId){
 		userId = req.query.userId;
