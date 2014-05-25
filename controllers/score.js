@@ -11,11 +11,13 @@ function commitScores(req, res) {
 		
 		findScoreByGameId(req, res, gameId, function(id){
 			if(id){
+				console.log("id found", id);
 				deleteScore(req, res, id, function(status){
 					createScore(req, res, score);
 				});
 			}
 			else{
+				console.log("id not found");
 				createScore(req, res, score);
 			}
 		});
@@ -27,6 +29,7 @@ function createScore(req, res, score){
 	console.log(score);
 	var acsJson = {
 		"session_id": req.session.session_id,
+		"user_id": req.session.user.id,
 		"classname" : "score",
 		"fields" : score
 	};
@@ -36,6 +39,7 @@ function createScore(req, res, score){
 }
 
 function findScoreByGameId(req, res, gameId, cb){
+	console.log(req.session.user.id, gameId);
 	ACS.Objects.query({
 		classname : 'score',
 		"session_id": req.session.session_id,
@@ -62,6 +66,7 @@ function findAllUserScores(req, res){
 	if(req.query.userId){
 		userId = req.query.userId;
 	}
+	console.log(userId);
 	ACS.Objects.query({
 		classname : 'score',
 		"session_id": req.session.session_id,
