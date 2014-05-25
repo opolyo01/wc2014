@@ -2,6 +2,9 @@ ul, li {
     list-style: none;
 }
 
+.playoffs-content{
+	display: none;
+}
 .games{
 	margin-left: 10px;
 }
@@ -134,7 +137,9 @@ header{
 .container .text-muted {
   margin: 20px 0;
 }
-
+.editable-click{
+	white-space: nowrap;
+}
 @media only screen 
 and (max-width : 760px) {
 	#container{
