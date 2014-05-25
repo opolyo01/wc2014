@@ -3,7 +3,6 @@ ul, li {
 }
 
 .games{
-	margin-top:5px;
 	margin-left: 10px;
 }
 
@@ -87,7 +86,8 @@ header{
 }
 
 .submitResults{
-	margin: 20px 60px;
+	margin: 20px 50px;
+	width: 200px;
 }
 
 .points-earned{
@@ -102,7 +102,7 @@ header{
 }
 
 .group .title{
-	margin-top:40px;
+	margin-top:10px;
 	font-size: 24px;
 }
 
@@ -162,7 +162,8 @@ and (max-width : 760px) {
 		font-size: 20px;
 	}
 	.submitResults{
-		margin-left: 120px;
+		width: 75%;
+		margin-left: 20px;
 	}
 	.logout{
 		margin-right:40px;

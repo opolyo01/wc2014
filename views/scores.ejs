@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li class="active">Group Games</li>
+  <li><a href="#">Playoffs</a></li>
+</ol>
+
 <ul class="games">
 	<div class="message"></div>
 	<% games.forEach(function(game, idx){
@@ -29,4 +34,4 @@
 	games = <%- JSON.stringify(games) %>;
 </script>
 
-<button class="submitResults">Commit</button>
+<button class="btn btn-lg btn-primary btn-block submitResults" type="submit">Commit</button>
