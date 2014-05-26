@@ -11,10 +11,14 @@
     { "path": "/logout", "method": "get", "callback": "user#logout" },
     { "path": "/signup", "method": "get", "callback": "application#signup" },
     { "path": "/signup", "method": "post", "callback": "user#signup" },
+    { "path": "/searchAllUsers", "method": "get", "callback": "user#searchAllUsers" },
 	{ "path": "/getAllGames", "method": "get", "callback": "game#getAllGames" },
 	{ "path": "/commitGames", "method": "post", "callback": "game#commitGames" },
 	{ "path": "/commitScores", "method": "post", "callback": "score#commitScores" },
 	{ "path": "/findAllUserScores", "method": "get", "callback": "score#findAllUserScores" },
-	{ "path": "/deleteOldUserScore", "method": "post", "callback": "score#deleteOldUserScore" }
+	{ "path": "/deleteOldUserScore", "method": "post", "callback": "score#deleteOldUserScore" },
+	{ "path": "/createBracket", "method": "post", "callback": "bracket#createBracket" },
+	{ "path": "/findAllUserBrackets", "method": "get", "callback": "bracket#findAllUserBrackets" },
+	{ "path": "/deleteOldUserBracket", "method": "post", "callback": "bracket#deleteOldUserBracket" }
   ]
 }

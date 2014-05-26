@@ -8,10 +8,11 @@ var groups = {
 	"G": ["GER", "USA", "POR", "GHA"],
 	"H": ["BEL", "KOR", "ALG", "RUS"]
 };
+
 var allTeams = ["BRA", "CRO", "CAM", "MEX","SPA", "NET", "CHI", "AUS",
 	"COL", "JAP", "GRE", "COT", "URU", "ITA", "COS", "ENG", "SWI", "HON", 
 	"ECU", "FRA", "ARG", "NIG", "BOS", "IRA", "GER", "USA", "POR", "GHA",
-	"BEL", "KOR", "ALG", "RUS"];
+	"BEL", "KOR", "ALG", "RUS"].sort();
 	
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	$.fn.editable.defaults.mode = 'inline';
@@ -164,14 +165,21 @@ $(".submitResults.playoffGames").on("click", function(){
 		finalOne = $("#finalOne").html(),
 		finalTwo = $("#finalTwo").html(),
 		champion = $("#champion").html();
-	var resp = {
+	var bracket = {
 		"quarterfinals": [quaterOne, quarterTwo, quarterThree, 
 						quarterFour, quarterFive, quarterSix,quarterSeven,quarterEight],
 		"semifinals": [semiOne, semiTwo, semiThree, semiFour],
 		"finals": [finalOne, finalTwo],
 		"champion": champion
 	};
-	console.log(resp);
+	$.post("/createBracket", bracket, function(json) {
+		if(json.length === 1){
+			alert("Playoff scores committed");
+		}
+		else{
+			alert("Playoff scores commit failed");
+		}
+	});
 });
 
 

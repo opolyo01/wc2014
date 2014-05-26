@@ -1,0 +1,17 @@
+<style>
+.users{margin:40px;}
+.users td{width:150px;}
+</style>
+<table class="users">
+
+</table>
+
+<script>
+	$.get("/searchAllUsers", {}, function(users) {
+		var output = "";
+		_.each(users, function(user){
+			output += "<tr><td border=1>"+user.username+"</td><td>0 points</td></tr>";
+		});
+		$(".users").html(output);
+	});
+</script>

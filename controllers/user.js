@@ -101,3 +101,9 @@ function logout(req, res) {
 		}
 	}, req, res);
 }
+
+function searchAllUsers(req, res) {
+	ACS.Users.search({}, function(e) {
+		res.send(e.users);
+	});
+}
