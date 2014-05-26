@@ -61,10 +61,23 @@ function findScoreByGameId(req, res, gameId, cb){
 	});
 }
 
+function findAllUserScoresNoId(req, res){
+	if(!req.session.user){
+		res.redirect('/');
+	}
+	
+	ACS.Objects.query({
+		classname : 'score',
+		"session_id": req.session.session_id,
+		per_page: 1000
+	}, function(e) {
+		res.send(e.score);
+	});
+}
+
 function findAllUserScores(req, res){
 	if(!req.session.user){
 		res.redirect('/');
-		return;
 	}
 	var userId =  req.session.user.id;
 	if(req.query.userId){

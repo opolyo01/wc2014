@@ -15,6 +15,7 @@
 	{ "path": "/getAllGames", "method": "get", "callback": "game#getAllGames" },
 	{ "path": "/commitGames", "method": "post", "callback": "game#commitGames" },
 	{ "path": "/commitScores", "method": "post", "callback": "score#commitScores" },
+	{ "path": "/findAllUserScoresNoId", "method": "get", "callback": "score#findAllUserScoresNoId" },
 	{ "path": "/findAllUserScores", "method": "get", "callback": "score#findAllUserScores" },
 	{ "path": "/deleteOldUserScore", "method": "post", "callback": "score#deleteOldUserScore" },
 	{ "path": "/createBracket", "method": "post", "callback": "bracket#createBracket" },
