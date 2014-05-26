@@ -8,6 +8,9 @@ var groups = {
 	"G": ["GER", "USA", "POR", "GHA"],
 	"H": ["BEL", "KOR", "ALG", "RUS"]
 };
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	$.fn.editable.defaults.mode = 'inline';
+}
 
 $(".winner").editable({
 	title: "Winner"
