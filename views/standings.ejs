@@ -1,7 +1,12 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+<div class="btn-group standing-view-selection">
+  <button type="button" class="btn btn-default perGame active">Per Game</button>
+  <button type="button" class="btn btn-default perUser">Per User</button>
+</div>
 
 <div class="allUsers"></div>
-<script id="table-template" type="text/x-handlebars-template">
+<div class="allGames"></div>
+
+<script id="allUsersTemplate" type="text/x-handlebars-template">
 	<div class="panel-group" id="accordion">
 	{{#users}}
   		<div class="panel panel-default">
@@ -31,35 +36,42 @@
 	</div>
 </script>
 
-<script>
-	$('.collapse').collapse();
-	var source = $("#table-template").html();
-	var template = Handlebars.compile(source);
-	
-	Handlebars.registerHelper('gameTeamOne', function(gameId) {
- 		 return _.find(games, function(game){return game.gameId == gameId;}).teamOne;
-	});
-	
-	Handlebars.registerHelper('gameTeamTwo', function(gameId) {
- 		 return _.find(games, function(game){return game.gameId == gameId;}).teamTwo;
-	});
-	
-	$.get("/findAllUserScoresNoId", {}, function(scores) {
-		var allUserNames = [];
-		var users = []; 
-		_.each(scores, function(score){allUserNames.push(score.user.username);});
-		allUserNames = _.uniq(allUserNames);
+<script id="allGamesTemplate" type="text/x-handlebars-template">
+	<table class="users table table-striped table-bordered">
+		<tr>
+			<th>Name</th>
+			<th>Final Total</th>
+			<th>gameOneTeamOne</th>
+			<th>gameOneTeamTwo</th>
+			<th>gameTwoTeamOne</th>
+			<th>gameTwoTeamTwo</th>
+			<th>gameThreeTeamOne</th>
+			<th>gameThreeTeamTwo</th>
+			<th>gameOneTeamOne</th>
+			<th>gameOneTeamTwo</th>
+			<th>gameTwoTeamOne</th>
+			<th>gameTwoTeamTwo</th>
+			<th>gameThreeTeamOne</th>
+			<th>gameThreeTeamTwo</th>
+		</tr>
+		<tr>
+			<td>Monster</td>
+			<td>60</td>
+			<td>1</td>
+			<td>1</td>
+			<td>2</td>
+			<td>1</td>
+			<td>3</td>
+			<td>2</td>
+			<td>1</td>
+			<td>1</td>
+			<td>2</td>
+			<td>1</td>
+			<td>3</td>
+			<td>2</td>
+		</tr>
+	</table>
 		
-		_.each(allUserNames, function(username){
-			var userScores = _.filter(scores, function(score){
-				if(score.user.username == username) {
-					return score;
-				}
-			});
-			users.push({"username": username, "scores": userScores});
-		});
-		
-		var html = template({"users": users});
-		$(".allUsers").html(html);
-	});
 </script>
+
+<script src="js/standings.js"></script>

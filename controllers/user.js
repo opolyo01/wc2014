@@ -5,12 +5,9 @@ var sdk = ACS.initACS('tZguppAg3gt9slE84nA7qgM6wxZeDYI1');
 //create a new user
 function signup(req, res) {
 	var data = {
-		first_name: req.body.first_name,
-		last_name: req.body.last_name,
-		email: req.body.email,
 		username: req.body.user_name,
 		password: req.body.password,
-		password_confirmation: req.body.password_confirmation,
+		password_confirmation: req.body.password,
 		custom_fields: {
 			group: req.body.group
 		}

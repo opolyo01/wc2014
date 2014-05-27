@@ -12,7 +12,13 @@ function createBracket(req, res) {
 		"fields" : req.body
 	};
 	
-	findAllUserBrackets(req, res, function(id){
+	findAllUserBrackets(req, res, function(bracket){
+		var id;
+		console.log(bracket);
+		if(bracket){
+			id = bracket.id;
+		}
+		
 		if(id){
 			console.log("id found", id);
 			deleteBracket(req, res, id, function(status){
@@ -47,15 +53,16 @@ function findAllUserBrackets(req, res, cb){
 		where: JSON.stringify({user_id: userId }),
 	    per_page: 200
 	}, function(e) {
-		var id;
-		if(e.bracket[0] && e.bracket[0].id){
-			id = e.bracket[0].id;
+		console.log(e.bracket);
+		var bracket;
+		if(e.bracket[0]){
+			bracket = e.bracket[0];
 		}
 		if(cb && cb.name !== "callbacks"){
-			cb.call(this,id);
+			cb.call(this,bracket);
 		}
 		else{
-			res.send(id);
+			res.send(bracket);
 		}
 	});
 }

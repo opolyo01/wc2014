@@ -2,6 +2,13 @@ ul, li {
     list-style: none;
 }
 
+.allUsers{
+	margin-top:20px;
+}
+
+.standing-view-selection{
+	margin:20px;
+}
 .playoffs-content{
 	display: none;
 }
