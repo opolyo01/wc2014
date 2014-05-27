@@ -40,7 +40,6 @@
 	}
 	
 	function perUser(){
-		$('.collapse').collapse();
 		var source = $("#allUsersTemplate").html();
 		var template = Handlebars.compile(source);
 		var html = template({"users": users});

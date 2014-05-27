@@ -1,5 +1,5 @@
 (function(){
-	$(".team").tooltip();
+	
 	$.get("/findAllUserScores", {}, function(scores) {
 		var scoreOne, scoreTwo, $score;
 		_.each(scores, function(score, key){

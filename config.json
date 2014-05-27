@@ -20,6 +20,11 @@
 	{ "path": "/deleteOldUserScore", "method": "post", "callback": "score#deleteOldUserScore" },
 	{ "path": "/createBracket", "method": "post", "callback": "bracket#createBracket" },
 	{ "path": "/findAllUserBrackets", "method": "get", "callback": "bracket#findAllUserBrackets" },
-	{ "path": "/deleteOldUserBracket", "method": "post", "callback": "bracket#deleteOldUserBracket" }
+	{ "path": "/deleteOldUserBracket", "method": "post", "callback": "bracket#deleteOldUserBracket" },
+	{"path":"/chatroom", "method":"get", "callback":"application#chatroom"}
+  ],
+  "websockets":
+  [
+    {"event": "newChatMsg", "callback": "chatroom#receiveMessage"}
   ]
 }

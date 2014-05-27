@@ -35,3 +35,7 @@ function update(req, res) {
 function signup(req, res) {
 	res.render('signup');
 }
+
+function chatroom(req, res) {
+    res.render('chatroom');
+}
