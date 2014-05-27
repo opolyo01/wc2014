@@ -1,21 +1,38 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
 
-<table class="users table table-striped table-bordered">
-</table>
-
+<div class="allUsers"></div>
 <script id="table-template" type="text/x-handlebars-template">
-	{{#scores}}
-		<tr>
-		    <td>{{user.username}}</td>
-			<td>{{gameTeamOne gameId}}</td>
-			<td>{{gameTeamTwo gameId}}</td>
-  			<td>{{teamOne}}</td>
-  			<td>{{teamTwo}}</td>
-  		</tr>
-	{{/scores}}
+	<div class="panel-group" id="accordion">
+	{{#users}}
+  		<div class="panel panel-default">
+    		<div class="panel-heading">
+      			<h4 class="panel-title">
+        			<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@index}}">
+            			{{username}}
+        			</a>
+      			</h4>
+    		</div>
+    		<div id="collapse{{@index}}" class="panel-collapse collapse">
+      			<div class="panel-body">
+					<table class="users table table-striped table-bordered">
+					{{#scores}}
+						<tr>
+							<td>{{gameTeamOne gameId}}</td>
+							<td>{{gameTeamTwo gameId}}</td>
+				  			<td>{{teamOne}}</td>
+				  			<td>{{teamTwo}}</td>
+				  		</tr>
+					{{/scores}}
+					</table>
+				</div>
+			</div>
+		</div>
+	{{/users}}
+	</div>
 </script>
 
 <script>
+	$('.collapse').collapse();
 	var source = $("#table-template").html();
 	var template = Handlebars.compile(source);
 	
@@ -28,7 +45,21 @@
 	});
 	
 	$.get("/findAllUserScoresNoId", {}, function(scores) {
-		var html = template({"scores": scores});
-		$(".users").html(html);
+		var allUserNames = [];
+		var users = []; 
+		_.each(scores, function(score){allUserNames.push(score.user.username);});
+		allUserNames = _.uniq(allUserNames);
+		
+		_.each(allUserNames, function(username){
+			var userScores = _.filter(scores, function(score){
+				if(score.user.username == username) {
+					return score;
+				}
+			});
+			users.push({"username": username, "scores": userScores});
+		});
+		
+		var html = template({"users": users});
+		$(".allUsers").html(html);
 	});
 </script>
