@@ -2,6 +2,9 @@ ul, li {
     list-style: none;
 }
 
+.users .odd{
+	background-color: #ddd;
+}
 .allUsers{
 	margin-top:20px;
 }

@@ -37,39 +37,25 @@
 </script>
 
 <script id="allGamesTemplate" type="text/x-handlebars-template">
-	<table class="users table table-striped table-bordered">
+	<table class="users table table-bordered">
 		<tr>
 			<th>Name</th>
 			<th>Final Total</th>
-			<th>gameOneTeamOne</th>
-			<th>gameOneTeamTwo</th>
-			<th>gameTwoTeamOne</th>
-			<th>gameTwoTeamTwo</th>
-			<th>gameThreeTeamOne</th>
-			<th>gameThreeTeamTwo</th>
-			<th>gameOneTeamOne</th>
-			<th>gameOneTeamTwo</th>
-			<th>gameTwoTeamOne</th>
-			<th>gameTwoTeamTwo</th>
-			<th>gameThreeTeamOne</th>
-			<th>gameThreeTeamTwo</th>
+			{{#games}}
+				<th class="{{evenOdd @index}}">{{formatTeam teamOne}}</th>
+				<th class="{{evenOdd @index}}">{{formatTeam teamTwo}}</th>
+			{{/games}}
 		</tr>
-		<tr>
-			<td>Monster</td>
-			<td>60</td>
-			<td>1</td>
-			<td>1</td>
-			<td>2</td>
-			<td>1</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-			<td>1</td>
-			<td>2</td>
-			<td>1</td>
-			<td>3</td>
-			<td>2</td>
-		</tr>
+		{{#users}}
+			<tr>
+				<td>{{username}}</td>
+				<td>0</td>
+				{{#scores}}
+					<td class="{{evenOdd @index}}">{{teamOne}}</td>
+					<td class="{{evenOdd @index}}">{{teamTwo}}</td>
+				{{/scores}}
+			</tr>
+		{{/users}}
 	</table>
 		
 </script>
