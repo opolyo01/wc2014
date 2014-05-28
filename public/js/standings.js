@@ -1,6 +1,8 @@
 (function(){
 	var users = [];
 	var allUserNames = [];
+	var bracketsArr = [];
+	
 	Handlebars.registerHelper('gameTeamOne', function(gameId) {
 		 return _.find(games, function(game){return game.gameId == gameId;}).teamOne;
 	});
@@ -19,7 +21,8 @@
 	init();
 	
 	function init(){
-		$(".allUsers").hide();
+		hideAll();
+		$(".allUsers").show();
 		$.get("/findAllUserScoresNoId", {}, function(scores) {
 			
 			_.each(scores, function(score){allUserNames.push(score.user.username);});
@@ -35,9 +38,16 @@
 			});
 			perGame();
 			perUser();
-			playoffs();
+			playoffsPerGame();
+			playoffsPerUser();
 		});
-		
+	}
+	
+	function hideAll(){
+		$(".allUsers").hide();
+		$(".allGames").hide();
+		$(".playoffGamesStanding").hide();
+		$(".playoffGamesStandingUser").hide();
 	}
 	
 	function perUser(){
@@ -54,10 +64,62 @@
 		$(".allGames").html(html);
 	}
 	
-	function playoffs(){
+	function playoffsPerUser(){
+		var oneEightsDB = [{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"},
+					{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"},
+					{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"},
+					{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"}];
+		var quarterFinalsDB = [{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"},
+					{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"}];
+		var semifinalsDB = [{"teamOne":"???", "teamTwo":"???"},{"teamOne":"???", "teamTwo":"???"}];
+		var finalsDB = [{"teamOne":"???", "teamTwo":"???"}];
+		
+		
+		var source = $("#playoffGamesUserTemplate").html();
+		var template = Handlebars.compile(source);
+		var usersArr = [];
+		
+		$.get("/findAllUserBracketsNoId", {}, function(brackets) {
+			_.each(allUserNames, function(username){
+				_.each(brackets, function(bracket){
+					if(!_.isEmpty(bracket.user) && bracket.user.username == username){
+						var quarterfinals = [],
+							semifinals = [],
+							finals = [],
+							champion = bracket.champion.champion;
+						var teams = [];
+						
+						_.each(bracket.quarterfinals, function(q){
+							var key = Object.keys(q)[0]; 
+							teams.push({"name":q[key]});
+						});
+						_.each(bracket.semifinals, function(q){
+							var key = Object.keys(q)[0]; 
+							teams.push({"name":q[key]});
+						});
+						_.each(bracket.finals, function(q){
+							var key = Object.keys(q)[0]; 
+							teams.push({"name":q[key]});
+						});
+						teams.push({"name":champion});
+						console.log(teams);
+						usersArr.push({"username": username, "teams": teams});
+					}
+				});
+				
+			});
+			
+			var html = template({"quarterfinals": quarterFinalsDB, 
+							"semifinals": semifinalsDB, "finals": finalsDB, 
+							"oneEights": oneEightsDB, "users": usersArr});
+			$(".playoffGamesStandingUser").html(html);
+		});
+		
+	}
+	
+	function playoffsPerGame(){
 		var source = $("#playoffGamesTemplate").html();
 		var template = Handlebars.compile(source);
-		var bracketsArr = [];
 		
 		$.get("/findAllUserBracketsNoId", {}, function(brackets) {
 			_.each(allUserNames, function(username){
@@ -81,7 +143,7 @@
 							finals.push(q[key]);
 						});
 						bracketsArr.push({"username": username, "quarterfinals": quarterfinals, 
-							"semifinals": semifinals, "finals": finals});
+							"semifinals": semifinals, "finals": finals, champion: champion});
 					}
 				});
 				
@@ -100,17 +162,19 @@
 		}
 		$(".standing-view-selection .active").removeClass('active');
 		$(target).addClass("active");
-		$(".allUsers").hide();
-		$(".allGames").hide();
-		$(".playoffGamesStanding").hide();
+		hideAll();
+		
 		if($(target).hasClass('perGame')){
 			$(".allUsers").show();
 		}
 		else if($(target).hasClass('perUser')){
 			$(".allGames").show();
 		}
-		else if($(target).hasClass('brackets')){
+		else if($(target).hasClass('bracketsPerGame')){
 			$(".playoffGamesStanding").show();
+		}
+		else if($(target).hasClass('bracketsPerUser')){
+			$(".playoffGamesStandingUser").show();
 		}
 	});
 	

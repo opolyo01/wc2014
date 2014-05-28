@@ -1,12 +1,14 @@
 <div class="btn-group standing-view-selection">
   <button type="button" class="btn btn-default perGame active">Group Per Game </button>
   <button type="button" class="btn btn-default perUser">Group Per User</button>
-  <button type="button" class="btn btn-default brackets">Brackets</button>
+  <button type="button" class="btn btn-default bracketsPerGame">Brackets Per Game</button>
+  <button type="button" class="btn btn-default bracketsPerUser">Brackets Per User</button>
 </div>
 
 <div class="allUsers"></div>
 <div class="allGames"></div>
 <div class="playoffGamesStanding"></div>
+<div class="playoffGamesStandingUser"></div>
 
 <script id="allUsersTemplate" type="text/x-handlebars-template">
 	<div class="panel-group" id="groupAccordion">
@@ -93,12 +95,52 @@
 						<td class="{{evenOdd @index}}">{{this}}</td>
 					{{/finals}}
 				</tr>
+				<tr>
+					<th>Champion:</th>
+					<td>{{champion}}</td>
+				</tr>
 			</table>
 		</div>
 	</div>
 	</div>
 	{{/brackets}}
 	</div>
+</script>
+
+<script id="playoffGamesUserTemplate" type="text/x-handlebars-template">
+	<table class="users table table-bordered">
+		<tr>
+			<td colspan="9">One Eights</td>
+			<td colspan="4">Quarterfinals</td>
+			<td colspan="2">Semifinals</td>
+			<td>Championship</td>
+			<td rowspan="2">Final Score</td>
+		</tr>
+		<tr>
+			<th>User</th>
+			{{#oneEights}}
+				<th>{{formatTeam teamOne}}-{{formatTeam teamTwo}}</th>
+			{{/oneEights}}
+			{{#quarterfinals}}
+				<th>{{formatTeam teamOne}}-{{formatTeam teamTwo}}</th>
+			{{/quarterfinals}}
+			{{#semifinals}}
+				<th>{{formatTeam teamOne}}-{{formatTeam teamTwo}}</th>
+			{{/semifinals}}
+			{{#finals}}
+				<th>{{formatTeam teamOne}}-{{formatTeam teamTwo}}</th>
+			{{/finals}}
+		</tr>
+		{{#users}}
+			<tr>
+				<td>{{username}}</td>
+				{{#each teams}}
+					<td>{{name}}</td>
+				{{/each}}
+				<td>0</td>
+			</tr>
+		{{/users}}
+	</table>
 </script>
 
 <script src="js/standings.js"></script>
