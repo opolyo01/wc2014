@@ -2,6 +2,9 @@ ul, li {
     list-style: none;
 }
 
+#tabs{
+	margin-top:40px;
+}
 .users .odd{
 	background-color: #ddd;
 }
@@ -62,7 +65,7 @@ ul, li {
 	font-size:26px;
 }
 header{
-	margin:10px;
+	height:15px;
 }
 
 .score input{

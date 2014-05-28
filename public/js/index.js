@@ -1,5 +1,7 @@
 (function(){
-	
+	$('.drawer').drawer({
+		desktopEvent:'click'
+	});
 	$.get("/findAllUserScores", {}, function(scores) {
 		var scoreOne, scoreTwo, $score;
 		_.each(scores, function(score, key){

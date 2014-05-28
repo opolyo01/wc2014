@@ -21,7 +21,7 @@ function admin(req, res) {
 	}
 	else if(req.session.user.admin == "true"){
 		console.log("in admin page");
-		res.render('admin');
+		res.render('admin', {user: req.session.user});
 	}
 	else{
 		res.render('login');
@@ -37,5 +37,22 @@ function signup(req, res) {
 }
 
 function chatroom(req, res) {
-    res.render('chatroom');
+	if(_.isEmpty(req.session.user)){
+		index(req, res);
+	}
+	else{
+		res.render('chatroom', {user: req.session.user});
+	}
+    
+}
+
+function settings(req, res) {
+	if(_.isEmpty(req.session.user)){
+		console.log("setting...");
+		index(req, res);
+	}
+	else{
+		res.render('settings', {user: req.session.user});
+	}
+    
 }

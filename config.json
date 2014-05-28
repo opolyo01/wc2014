@@ -3,6 +3,7 @@
   [
     { "path": "/", "callback": "application#index" },
      { "path": "/index", "callback": "application#index" },
+     { "path": "/settings", "callback": "application#settings" },
     { "path": "/login", "method": "get", "callback": "application#login" },
     { "path": "/admin", "method": "get", "callback": "application#admin" },
     { "path": "/login", "method": "post", "callback": "user#login" },

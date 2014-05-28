@@ -1,15 +1,21 @@
 <% include header.ejs %>
+<% include navbar.ejs %>
 
+<div id="container" class="drawer-overlay">
+	<header style="height:50px;">
+		<a href="/logout" class="logout">logout </a>
+	</header>
+	<button class="commitGames btn">Load Games</button>
+	User ID: <input type="text" class="userId"/>
+	<button class="deleteScores btn">Delete Old User Scores</button>
+</div>
 
-<button class="commitGames">Load Games</button>
-
-User ID: <input type="text" class="userId"/>
-
-<button class="deleteScores">Delete Old User Scores</button>
-
-<a href="/" class="home">Go Home</a>
+<script src="drawer/js/drawer.js"></script>
 
 <script>
+	$('.drawer').drawer({
+		desktopEvent:'click'
+	});
 	$(".commitGames").click(function() {
 		$.post("/commitGames", {}, function(json) {
 			console.log(json);

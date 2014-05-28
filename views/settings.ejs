@@ -1,0 +1,17 @@
+<% include header.ejs %>
+<% include navbar.ejs %>
+
+<div id="container" class="drawer-overlay">
+	<header style="height:50px;">
+		<a href="/logout" class="logout">logout </a>
+	</header>
+	<div><input name="group" placeholder="group" title="group" autocapitalize="off" class="form-control" /></div>
+	<button class="btn btn-lg btn-primary btn-block">Set Group</button>
+</div>
+
+<script src="drawer/js/drawer.js"></script>
+<script>
+	$('.drawer').drawer({
+		desktopEvent:'click'
+	});
+</script>

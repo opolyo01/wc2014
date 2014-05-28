@@ -1,0 +1,14 @@
+<button class="drawer-toggle">&#8592 <%= user.name %></button>
+<div class="drawer drawer-default">
+	<nav class="drawer-nav" role="navigation">
+		<ul class="nav drawer-nav-list">
+			<li><a href="/" class="home">Home</a></li>
+			<% if(user.admin == "true") { %>
+				<li><a href="/admin" class="admin">Admin</a></li>
+			<% } %>
+			<li><a href="/settings" class="admin">Settings</a></li>
+			<li><a href="/chatroom" class="admin">Chat</a></li>
+			<li><a href="/logout">logout </a></li>
+		</ul>
+	</nav>
+</div>

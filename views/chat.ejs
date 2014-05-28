@@ -1,1 +1,49 @@
-<h1>Chat is coming soon</h1>
+<link rel="stylesheet" href="/css/chatroom.css" type="text/css" media="screen" />
+<script src="/socket.io/socket.io.js"></script>
+
+<% include navbar.ejs %>
+<div id="container" class="drawer-overlay">
+	<header style="height:50px;">
+		<a href="/logout" class="logout">logout </a>
+	</header>
+    <div id="ic">Incoming Chat:</div>
+    <div id="chat-ctnr">
+      <ul id="incomingChatMessages"></ul>
+    </div>
+    <input type="text" id="outgoingChatMessage"><input id="sendMessageButton" type="button" value="send" onclick='sendMsg()'>
+</div>
+
+<script src="drawer/js/drawer.js"></script>
+<script>
+	$('.drawer').drawer({
+		desktopEvent:'click'
+	});
+  //establish websocket connection with server
+  
+  var iosocket = io.connect('http://'+location.host);
+  iosocket.on('connect', function () {
+  $('#incomingChatMessages').append($('<li class="alert">Connected</li>'));
+
+  //when received message from server
+  iosocket.on('message', function(data) {
+    var icm = $('<li class="active"></li>');
+    $('#incomingChatMessages').append(icm.text(data.message));
+    setTimeout(function() { icm.removeClass('active') }, 1500);
+    $('#chat-ctnr').scrollTop($('#incomingChatMessages').height() + 100 );
+  });
+  iosocket.on('disconnect', function() {
+    iosocket.on('message', null);
+      $('#incomingChatMessages').append('<li class="alert">Disconnected</li>');
+    });
+  });
+
+  //send new chat message
+  function sendMsg() {
+    iosocket.emit('newChatMsg', {message: $('#outgoingChatMessage').val()});
+    var ocm = $('<li class="active"></li>');
+    $('#incomingChatMessages').append(ocm.text($('#outgoingChatMessage').val()));
+    $('#chat-ctnr').scrollTop($('#incomingChatMessages').height() + 100 );
+    setTimeout(function() { ocm.removeClass('active') }, 1500);
+    $('#outgoingChatMessage').val('');
+  }
+</script>
