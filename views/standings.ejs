@@ -1,18 +1,20 @@
 <div class="btn-group standing-view-selection">
-  <button type="button" class="btn btn-default perGame active">Per Game</button>
-  <button type="button" class="btn btn-default perUser">Per User</button>
+  <button type="button" class="btn btn-default perGame active">Group Per Game </button>
+  <button type="button" class="btn btn-default perUser">Group Per User</button>
+  <button type="button" class="btn btn-default brackets">Brackets</button>
 </div>
 
 <div class="allUsers"></div>
 <div class="allGames"></div>
+<div class="playoffGamesStanding"></div>
 
 <script id="allUsersTemplate" type="text/x-handlebars-template">
-	<div class="panel-group" id="accordion">
+	<div class="panel-group" id="groupAccordion">
 	{{#users}}
   		<div class="panel panel-default">
     		<div class="panel-heading">
       			<h4 class="panel-title">
-        			<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{@index}}">
+        			<a data-toggle="collapse" data-parent="#groupAccordion" href="#collapse{{@index}}">
             			{{username}}
         			</a>
       			</h4>
@@ -57,7 +59,46 @@
 			</tr>
 		{{/users}}
 	</table>
-		
+</script>
+
+<script id="playoffGamesTemplate" type="text/x-handlebars-template">
+	<div class="panel-group" id="playoffAccordion">
+    {{#brackets}}
+    <div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" data-parent="#playoffAccordion" href="#collapsePlayoff{{@index}}">
+    			{{username}}
+			</a>
+		</h4>
+	</div>
+	<div id="collapsePlayoff{{@index}}" class="panel-collapse collapse">
+    	<div class="panel-body">
+			<table class="table table-bordered">
+				<tr>
+					<th>Quaterfinals:</th>
+					{{#quarterfinals}}
+						<td class="{{evenOdd @index}}">{{this}}</td>
+					{{/quarterfinals}}
+				</tr>
+				<tr>
+					<th>Semifinals:</th>
+					{{#semifinals}}
+						<td class="{{evenOdd @index}}">{{this}}</td>
+					{{/semifinals}}
+				</tr>
+				<tr>
+					<th>Finals:</th>
+					{{#finals}}
+						<td class="{{evenOdd @index}}">{{this}}</td>
+					{{/finals}}
+				</tr>
+			</table>
+		</div>
+	</div>
+	</div>
+	{{/brackets}}
+	</div>
 </script>
 
 <script src="js/standings.js"></script>

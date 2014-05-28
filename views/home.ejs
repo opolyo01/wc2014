@@ -10,7 +10,9 @@
 	<div id="tabs">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#scores" data-toggle="tab">Scores</a></li>
-			<li><a href="#standings" data-toggle="tab">Standings</a></li>
+			<% if(user.admin == "true") { %>
+				<li><a href="#standings" data-toggle="tab">Standings</a></li>
+			<% } %>
 			<li><a href="#chat" data-toggle="tab">Chat</a></li>
 		</ul>
 		<div class="tab-content">

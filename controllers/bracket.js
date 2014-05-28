@@ -51,7 +51,7 @@ function findAllUserBrackets(req, res, cb){
 		classname : 'bracket',
 		"session_id": req.session.session_id,
 		where: JSON.stringify({user_id: userId }),
-	    per_page: 200
+	    per_page: 1000
 	}, function(e) {
 		console.log(e.bracket);
 		var bracket;
@@ -67,6 +67,19 @@ function findAllUserBrackets(req, res, cb){
 	});
 }
 
+function findAllUserBracketsNoId(req, res){
+	if(!req.session.user){
+		res.redirect('/');
+	}
+	
+	ACS.Objects.query({
+		classname : 'bracket',
+		"session_id": req.session.session_id,
+		per_page: 1000
+	}, function(e) {
+		res.send(e.bracket);
+	});
+}
 
 function deleteBracket(req, res, id, cb){
 	ACS.Objects.remove({

@@ -20,6 +20,7 @@
 	{ "path": "/deleteOldUserScore", "method": "post", "callback": "score#deleteOldUserScore" },
 	{ "path": "/createBracket", "method": "post", "callback": "bracket#createBracket" },
 	{ "path": "/findAllUserBrackets", "method": "get", "callback": "bracket#findAllUserBrackets" },
+	{ "path": "/findAllUserBracketsNoId", "method": "get", "callback": "bracket#findAllUserBracketsNoId" },
 	{ "path": "/deleteOldUserBracket", "method": "post", "callback": "bracket#deleteOldUserBracket" },
 	{"path":"/chatroom", "method":"get", "callback":"application#chatroom"}
   ],
