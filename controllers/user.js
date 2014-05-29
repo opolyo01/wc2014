@@ -86,6 +86,7 @@ function update(req, res) {
 }
 
 function logout(req, res) {
+	console.log("logout");
 	ACS.Users.logout(function(data) {
 		logger.debug("######logout######");
 		logger.debug(JSON.stringify(data, null, 2));
