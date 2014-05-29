@@ -91,6 +91,7 @@ function logout(req, res) {
 		logger.debug("######logout######");
 		logger.debug(JSON.stringify(data, null, 2));
 		if(data.success) {
+			console.log("go to index");
 			delete req.session.user;
 			res.redirect('/');
 		} else {

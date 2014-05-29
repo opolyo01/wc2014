@@ -1,13 +1,2 @@
 <% include header.ejs %>
-
-<% if(user) { %>
-	<%- include chat %>
-<% } 
-
-else {%>
-	<% 	var message; 
-		if(message) { %>
-		<div class="error"><%= message %></div>
-	<% } %>
-	<%- include login %>
-<% } %>
+<%- include chat %>

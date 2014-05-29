@@ -1,5 +1,10 @@
+<% include header.ejs %>
+
 <div class="signup">
-	
+	<% 	var message; 
+		if(message) { %>
+		<div class="error"><%= message %></div>
+	<% } %>
 	<h1>World Cup 2014 Poll</h1>
 	
   <form class="form-signin" role="form" action="/login" method="post">
@@ -12,3 +17,6 @@
   </form>
 
 </div>
+
+</body>
+</html>

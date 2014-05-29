@@ -65,33 +65,37 @@ function findAllUserScoresNoId(req, res){
 	if(!req.session.user){
 		res.redirect('/');
 	}
+	else{
+		ACS.Objects.query({
+			classname : 'score',
+			"session_id": req.session.session_id,
+			per_page: 1000
+		}, function(e) {
+			res.send(e.score);
+		});
+	}
 	
-	ACS.Objects.query({
-		classname : 'score',
-		"session_id": req.session.session_id,
-		per_page: 1000
-	}, function(e) {
-		res.send(e.score);
-	});
 }
 
 function findAllUserScores(req, res){
 	if(!req.session.user){
 		res.redirect('/');
 	}
-	var userId =  req.session.user.id;
-	if(req.query.userId){
-		userId = req.query.userId;
+	else{
+		var userId =  req.session.user.id;
+		if(req.query.userId){
+			userId = req.query.userId;
+		}
+		console.log(userId);
+		ACS.Objects.query({
+			classname : 'score',
+			"session_id": req.session.session_id,
+			where: JSON.stringify({user_id: userId }),
+		    per_page: 200
+		}, function(e) {
+			res.send(e.score);
+		});
 	}
-	console.log(userId);
-	ACS.Objects.query({
-		classname : 'score',
-		"session_id": req.session.session_id,
-		where: JSON.stringify({user_id: userId }),
-	    per_page: 200
-	}, function(e) {
-		res.send(e.score);
-	});
 }
 
 

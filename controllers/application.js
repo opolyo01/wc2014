@@ -4,20 +4,25 @@ var moment = require("moment");
 var _ = require("lodash");
 
 function index(req, res) {
-	console.log(req.body);	
-	res.render('index', {user: req.session.user, games: Game.games, moment: moment});
+	if(req.session.user){
+		res.render('home', {user: req.session.user, games: Game.games, moment: moment});
+	}
+	else{
+		console.log("login");
+		res.redirect('login');
+	}
+	
 }
 
 function login(req, res) {
-	index(req, res);
+	res.render('login');
 }
 
 function admin(req, res) {
 	console.log("user", req.session.user);
 	
 	if(_.isEmpty(req.session.user)){
-		console.log("here");
-		index(req, res);
+		res.render('login');
 	}
 	else if(req.session.user.admin == "true"){
 		console.log("in admin page");
@@ -38,7 +43,7 @@ function signup(req, res) {
 
 function chatroom(req, res) {
 	if(_.isEmpty(req.session.user)){
-		index(req, res);
+		res.render('login');
 	}
 	else{
 		res.render('chatroom', {user: req.session.user});
@@ -48,8 +53,7 @@ function chatroom(req, res) {
 
 function settings(req, res) {
 	if(_.isEmpty(req.session.user)){
-		console.log("setting...");
-		index(req, res);
+		res.render('login');
 	}
 	else{
 		res.render('settings', {user: req.session.user});
