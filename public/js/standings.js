@@ -25,7 +25,15 @@
 		$(".allUsers").show();
 		$.get("/findAllUserScoresNoId", {}, function(scores) {
 			
-			_.each(scores, function(score){allUserNames.push(score.user.username);});
+			_.each(scores, function(score){
+				if(score && score.user){
+					allUserNames.push(score.user.username);
+				}
+				else{
+					console.log(score);
+				}
+				
+			});
 			allUserNames = _.uniq(allUserNames);
 			
 			_.each(allUserNames, function(username){
