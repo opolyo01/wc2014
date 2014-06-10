@@ -55,7 +55,7 @@ function login(req, res) {
 			res.redirect('/');
 		} else {
 			logger.info("Login error: " + data.message);
-			res.render('index', {user: undefined, message: data.message});
+			res.render('login', {user: undefined, message: data.message});
 		}
 	}, req, res);
 }
